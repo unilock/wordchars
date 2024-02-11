@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "cc.unilock.wordchars.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client": [
+    "EditBoxMixin",
+    "TextFieldWidgetMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

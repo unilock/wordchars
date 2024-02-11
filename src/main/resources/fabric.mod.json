@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "wordchars",
+	"version": "${version}",
+	"name": "wordchars",
+	"description": "Makes Minecraft's word detection work a bit more like bash's.",
+	"authors": [
+		"unilock"
+	],
+	"contact": {
+		"sources": "https://github.com/unilock/wordchars",
+		"issues": "https://github.com/unilock/wordchars/issues"
+	},
+	"license": "MIT",
+	"environment": "client",
+	"mixins": [
+		"wordchars.mixins.json"
+	],
+	"depends": {
+		"fabricloader": "*",
+		"minecraft": "*",
+		"mixinextras": "*"
+	}
+}
