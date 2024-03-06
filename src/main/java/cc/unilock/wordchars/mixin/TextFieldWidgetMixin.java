@@ -25,10 +25,11 @@ public class TextFieldWidgetMixin {
 		for(int i = 0; i < maxWordSkips; i++) {
 			if (!backwards) {
 				int length = this.text.length();
-				curPos += StringUtils.indexOfAny(this.text.substring(curPos), Wordchars.ARRAY);
-				if (curPos == -1) {
+				int index = StringUtils.indexOfAny(this.text.substring(curPos), Wordchars.ARRAY);
+				if (index == -1) {
 					curPos = length;
 				} else {
+					curPos += index;
 					while (skipOverSpaces && curPos < length && Wordchars.isWordchar(this.text.charAt(curPos))) {
 						curPos++;
 					}
