@@ -22,7 +22,7 @@ public class TextFieldWidgetMixin {
 		boolean backwards = wordOffset < 0;
 		int maxWordSkips = Math.abs(wordOffset);
 
-		for(int i = 0; i < maxWordSkips; i++) {
+		for (int i = 0; i < maxWordSkips; i++) {
 			if (!backwards) {
 				int length = this.text.length();
 				int index = StringUtils.indexOfAny(this.text.substring(curPos), Wordchars.ARRAY);
