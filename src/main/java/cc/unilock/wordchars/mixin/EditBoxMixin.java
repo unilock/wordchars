@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(EditBox.class)
 public class EditBoxMixin {
 	@WrapOperation(method = {"getPreviousWordAtCursor", "getNextWordAtCursor", "getWordEndIndex"}, at = @At(value = "INVOKE", target = "Ljava/lang/Character;isWhitespace(C)Z"))
-	private boolean getPreviousWordAtCursor(char ch, Operation<Boolean> original) {
+	private boolean isWhitespace(char ch, Operation<Boolean> original) {
 		return Wordchars.isWordchar(ch, original);
 	}
 }

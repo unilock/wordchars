@@ -18,32 +18,32 @@ public class TextFieldWidgetMixin {
 	 */
 	@Overwrite
 	private int getWordSkipPosition(int wordOffset, int cursorPosition, boolean skipOverSpaces) {
-		int i = cursorPosition;
-		boolean bl = wordOffset < 0;
-		int j = Math.abs(wordOffset);
+		int curPos = cursorPosition;
+		boolean backwards = wordOffset < 0;
+		int maxWordSkips = Math.abs(wordOffset);
 
-		for(int k = 0; k < j; ++k) {
-			if (!bl) {
-				int l = this.text.length();
-				i += StringUtils.indexOfAny(this.text.substring(i), Wordchars.ARRAY);
-				if (i == -1) {
-					i = l;
+		for(int i = 0; i < maxWordSkips; i++) {
+			if (!backwards) {
+				int length = this.text.length();
+				curPos += StringUtils.indexOfAny(this.text.substring(curPos), Wordchars.ARRAY);
+				if (curPos == -1) {
+					curPos = length;
 				} else {
-					while(skipOverSpaces && i < l && Wordchars.isWordchar(this.text.charAt(i))) {
-						++i;
+					while (skipOverSpaces && curPos < length && Wordchars.isWordchar(this.text.charAt(curPos))) {
+						curPos++;
 					}
 				}
 			} else {
-				while(skipOverSpaces && i > 0 && Wordchars.isWordchar(this.text.charAt(i - 1))) {
-					--i;
+				while (skipOverSpaces && curPos > 0 && Wordchars.isWordchar(this.text.charAt(curPos - 1))) {
+					curPos--;
 				}
 
-				while(i > 0 && !Wordchars.isWordchar(this.text.charAt(i - 1))) {
-					--i;
+				while (curPos > 0 && !Wordchars.isWordchar(this.text.charAt(curPos - 1))) {
+					curPos--;
 				}
 			}
 		}
 
-		return i;
+		return curPos;
 	}
 }
